@@ -6,13 +6,15 @@ from utils.utils import gaussian2d_rolled_labels, cos_window
 from hog_cpp.fhog.get_hog import get_hog
 from utils.hist_helper import calc_color_histogram
 
+vgg_path = 'model/imagenet-vgg-verydeep-19.mat'
+
 
 def create_model():
     import scipy
     from keras.applications.vgg19 import VGG19
     from keras.models import Model
 
-    mat = scipy.io.loadmat('D:/PROJECTS/MOT_CNN_DATAASSOCIATION/imagenet-vgg-verydeep-19.mat')
+    mat = scipy.io.loadmat(vgg_path)
     model = VGG19(mat)
     ixs = [2, 5, 10, 15, 20]
     outputs = [model.layers[i].output for i in ixs]

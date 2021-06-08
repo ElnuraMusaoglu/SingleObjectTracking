@@ -14,13 +14,12 @@ from utils.utils import plot_all_success_for_tracking_methods, \
 ['MOSSE', 'Kalman',
 'OPENCV_CSRT', 'OPENCV_GOTURN', 'OPENCV_BOOSTING', 'OPENCV_MEDIANFLOW', 'OPENCV_MIL', 'OPENCV_TLD', 'OPENCV_MOSSE', 
 'KCF_GRAY', 'KCF_COLOR', 'KCF_HOG',
-'Hierarchical_KCF_VGG19_C1', 'Hierarchical_KCF_VGG19_C2', 'Hierarchical_KCF_VGG19_C3', 'Hierarchical_KCF_VGG19_C4',
-'Hierarchical_KCF_VGG19_C5', 'Hierarchical_KCF_VGG19']
+'HCF_C1', 'HCF_C2', 'HCF_C3', 'HCF_C4', 'HCF_C5', 'HCF']
 '''
 
 
 def run_all_trackers(data_dir, result_gt_dir):
-    tracking_methods = ['Hierarchical_KCF_VGG19_C1', 'Hierarchical_KCF_VGG19', 'Hierarchical_KCF_VGG19_C5']
+    tracking_methods = ['HCF_C1', 'HCF', 'HCF_C5']
 
     for tracking_method in tracking_methods:
         run_tracker(tracking_method, data_dir, result_gt_dir)
@@ -121,10 +120,10 @@ def evaluate_all_trackers(data_dir, result_gt_dir, plot_path):
 
 
 if __name__ == '__main__':
-    data_dir = 'D:/DATASET/temp'
-    result_gt_dir = 'D:/DATASET/RESULT/GT/LAST'
-    plot_path = 'D:/TEST/PLOT'
+    data_dir = ''  # OTB-100 dataset
+    result_gt_dir = ''  # Tracking result GT write path
+    plot_path = ''  # Tracking result plot path
 
-    # run_all_trackers(data_dir, result_gt_dir)
+    # run_all_trackers(data_dir, result_gt_dir)  #  1. step run trackers
 
-    evaluate_all_trackers(data_dir, result_gt_dir, plot_path)
+    evaluate_all_trackers(data_dir, result_gt_dir, plot_path)  # 2. step evaluate trackers result
